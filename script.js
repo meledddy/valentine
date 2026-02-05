@@ -51,7 +51,7 @@
 
     wrap.innerHTML = `
       <div class="envelope" id="envelope">
-        <div class="envelope-base"></div>
+        <div class="envelope-back"></div>
         <div class="letter-sleeve">
           <div class="letter">
             <div class="letter-inner">
@@ -62,7 +62,9 @@
             </div>
           </div>
         </div>
-        <div class="envelope-front"></div>
+        <div class="envelope-pocket">
+          <span class="pocket-bottom"></span>
+        </div>
         <div class="envelope-heart"></div>
         <div class="envelope-flap"></div>
       </div>
