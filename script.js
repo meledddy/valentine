@@ -8,6 +8,15 @@
 
   if (!yesBtn || !noBtn || !cardTitle || !cardImage || !actions || !page) return;
 
+  let yesScale = 1;
+  const maxScale = 1.14;
+  const scaleStep = 0.03;
+
+  const growYesButton = () => {
+    yesScale = Math.min(maxScale, yesScale + scaleStep);
+    yesBtn.style.setProperty("--yes-scale", yesScale.toFixed(2));
+  };
+
   const moveNoButton = () => {
     const padding = 12;
     if (!noBtn.classList.contains("is-floating")) {
@@ -28,6 +37,7 @@
   ["mouseenter", "click", "touchstart"].forEach((evt) => {
     noBtn.addEventListener(evt, (event) => {
       event.preventDefault();
+      growYesButton();
       moveNoButton();
     });
   });
@@ -42,12 +52,14 @@
     wrap.innerHTML = `
       <div class="envelope" id="envelope">
         <div class="envelope-base"></div>
-        <div class="letter">
-          <div class="letter-inner">
-            <h3>My Valentine 💌</h3>
-            <p>You are my favorite person, my warmest comfort, and my sweetest smile.</p>
-            <p>Thank you for making every day feel softer and brighter.</p>
-            <p class="sig">— from me</p>
+        <div class="letter-sleeve">
+          <div class="letter">
+            <div class="letter-inner">
+              <h3>My Valentine 💌</h3>
+              <p>You are my favorite person, my warmest comfort, and my sweetest smile.</p>
+              <p>Thank you for making every day feel softer and brighter.</p>
+              <p class="sig">— from me</p>
+            </div>
           </div>
         </div>
         <div class="envelope-front"></div>
@@ -70,7 +82,7 @@
 
   yesBtn.addEventListener("click", () => {
     cardTitle.textContent = "Ура! С 14 февраля ❤️";
-    cardImage.src = "assets/gif.gif";
+    cardImage.src = "assets/yay.gif";
     cardImage.alt = "Valentine gif";
     actions.style.display = "none";
     createEnvelope();
