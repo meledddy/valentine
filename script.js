@@ -42,51 +42,45 @@
     });
   });
 
-  const createEnvelope = () => {
-    if (document.getElementById("envelopeWrap")) return;
+  const createSealedCard = () => {
+    if (document.getElementById("sealedCardWrap")) return;
 
     const wrap = document.createElement("div");
-    wrap.className = "envelope-wrap";
-    wrap.id = "envelopeWrap";
+    wrap.className = "sealed-card-wrap";
+    wrap.id = "sealedCardWrap";
 
     wrap.innerHTML = `
-      <div class="envelope" id="envelope">
-        <div class="envelope-back"></div>
-        <div class="letter-sleeve">
-          <div class="letter">
-            <div class="letter-inner">
-              <h3>My Valentine 💌</h3>
-              <p>You are my favorite person, my warmest comfort, and my sweetest smile.</p>
-              <p>Thank you for making every day feel softer and brighter.</p>
-              <p class="sig">— from me</p>
-            </div>
-          </div>
+      <div class="sealed-card" id="sealedCard">
+        <div class="seal-ribbon">
+          <span class="seal-heart"></span>
+          <span class="seal-spark"></span>
+          <span class="seal-text">Коснись сердца</span>
         </div>
-        <div class="envelope-pocket">
-          <span class="pocket-bottom"></span>
+        <div class="sealed-content">
+          <p>Ты моё тепло, мой тихий уют и моя самая искренняя улыбка.</p>
+          <p>Спасибо тебе за то, что делаешь мой день мягче, светлее и теплее.</p>
+          <p class="sig">- от меня 💌</p>
         </div>
-        <div class="envelope-heart"></div>
-        <div class="envelope-flap"></div>
       </div>
     `;
 
     page.appendChild(wrap);
 
-    const envelope = document.getElementById("envelope");
-    if (!envelope) return;
+    const sealedCard = document.getElementById("sealedCard");
+    if (!sealedCard) return;
 
-    envelope.addEventListener("click", () => {
-      if (!envelope.classList.contains("is-open")) {
-        envelope.classList.add("is-open");
+    sealedCard.addEventListener("click", () => {
+      if (!sealedCard.classList.contains("is-open")) {
+        sealedCard.classList.add("is-open");
       }
     });
   };
 
   yesBtn.addEventListener("click", () => {
-    cardTitle.textContent = "Ура! С 14 февраля ❤️";
+    cardTitle.textContent = "Поздравляю с нашим днём! 🫂";
     cardImage.src = "assets/yay.gif";
     cardImage.alt = "Valentine gif";
     actions.style.display = "none";
-    createEnvelope();
+    createSealedCard();
   });
 })();
